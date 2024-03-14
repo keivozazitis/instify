@@ -115,4 +115,84 @@
   .register-form .login-link a:hover {
     text-decoration: underline;
   }
+  .instify {
+    position: absolute;
+    top: 343px;
+    left: 593px;
+    font-size: 64px;
+    display: inline-block;
+    width: 254px;
+    height: 55px;
+  }
+  .desktop-1-child {
+    position: absolute;
+    top: 418px;
+    left: 414px;
+    background-color: rgba(228, 104, 209, 0.53);
+    width: 507px;
+    height: 551px;
+  }
+  .desktop-1-item,
+  .username {
+    position: absolute;
+    top: 495px;
+    left: 452px;
+    width: 432px;
+    height: 114.5px;
+  }
+  .username {
+    top: 512px;
+    left: 414px;
+    display: inline-block;
+    width: 185px;
+    height: 22px;
+  }
+  .instify-1-icon,
+  .password {
+    position: absolute;
+    top: 580px;
+    left: 468px;
+  }
+  .instify-1-icon {
+    top: 212px;
+    left: 431px;
+    width: 229px;
+    height: 206px;
+    object-fit: cover;
+  }
+  .login {
+    position: absolute;
+    top: 428px;
+    left: 554px;
+    font-size: 40px;
+    display: inline-block;
+    width: 227px;
+    height: 106px;
+  }
+  .desktop-1-inner {
+    position: absolute;
+    top: 644px;
+    left: 452px;
+    background-color: #f39d4d;
+    width: 428px;
+    height: 42px;
+  }
+  .login1 {
+    position: absolute;
+    top: 650px;
+    left: 623px;
+    font-size: 24px;
+    color: #000;
+  }
+  .desktop-1 {
+    width: 100%;
+    position: relative;
+    background-color: #171e1d;
+    height: 1024px;
+    overflow: hidden;
+    text-align: center;
+    font-size: var(--font-size-sm);
+    color: var(--color-white);
+    font-family: var(--font-inter);
+  }
   
