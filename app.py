@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, url_for, flash, redirect
+from flask import Flask, render_template, request, url_for, redirect, session
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.secret_key = "IUFBAINnfnauionfuanUINFI"
 
 
 db = SQLAlchemy(app)
@@ -22,8 +23,27 @@ class users(db.Model):
 
 
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        
+        user = users.query.filter_by(username = username).first()
+        
+        if user is None:
+            print("doesnt exist")
+            return redirect(url_for("login"))
+        
+        if user.password != password:
+            print("invalid password")
+            return redirect(url_for("login"))
+
+        session['user-username'] = user.username
+        session['user-id'] = user._id
+
+        print(session['user-username'])
+        print(session['user-id'])
 
     
 
