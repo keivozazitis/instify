@@ -1,29 +1,33 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
-
-    <link rel="stylesheet" href="static/main.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap"
-    />
-  </head>
-  <body>
-    <div class="desktop-1">
-      <div class="instify">Instify</div>
-      <div class="desktop-1-child"></div>
-      <img class="desktop-1-item" src="{{ url_for('static', filename='bangsas.png') }}" alt=".">
-      
-      <div class="username">USERNAME</div>
-      <img class="desktop-2-item" src="{{ url_for('static', filename='bangsas.png') }}" alt=".">
-      <div class="password">PASSWORD</div>
-      <img class="instify-1-icon" src="{{ url_for('static', filename='Instify.png') }}" alt="bilde">
-
-      <div class="login">LOGIN</div>
-      <div class="desktop-1-inner"></div>
-      <div class="login1">LOGIN</div>
-    </div>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="static/main.css" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrapper">
+    <form action="">
+      <h1>LOGIN</h1>
+      <div class="input-box">
+        <input type="text" placeholder="Username" required>
+        <i class='bx bxs-user'></i>
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="password" required>
+        <i class='bx bxs-lock'></i>
+      </div>
+      <div class="remember-forgot">
+        <label><input type="checkbox"> Remember me </label>
+        <a href="#">Forgot password?</a>
+      </div>
+      <button type="submit" class="btn">Login</button>
+      <div class="register-link">
+        <p>Don't have an account? <a href="#">Register</a></p>
+      </div>
+    </form>
+  </div>
+</body>
 </html>
