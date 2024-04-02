@@ -1,15 +1,61 @@
 from flask import Flask, render_template, request, url_for, flash, redirect
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+
+db = SQLAlchemy(app)
+
+
+class users(db.Model):
+    _id = db.Column("id", db.Integer, primary_key=True)
+    username = db.Column(db.String(100))
+    password = db.Column(db.String(100))
+    email = db.Column(db.String(100))
+
+    def __init__(self, username, password, email):
+        self.username = username
+        self.password = password
+        self.email = email
+
+
 
 @app.route("/")
-def hello_world():
+def login():
+
+    
+
     return render_template("index.html", title="Hello")
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if (request.method == 'POST'):
-        print(request.form['fullname'])
-    # jaatrod kodu, ka sanemt datus no html formas uz python puses (python kodaa)
+        username = request.form['username']
+        password = request.form['password']
+        email = request.form['email']
+
+        user = users(username, password, email)
+        db.session.add(user)
+        db.session.commit()
+    
 
     return render_template("register.html", title="Registration")
+
+
+
+
+
+@app.route('/view')
+def view():
+    return render_template("view.html", values=users.query.all())
+
+
+
+if __name__ == "__main__":
+    with app.app_context():
+        db.create_all()
+    app.run(debug=True)
+
+
