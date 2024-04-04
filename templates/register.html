@@ -6,32 +6,39 @@
     <title>Register</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
+    <script src="../static/main.js" defer></script>
 </head>
 <body>
 <div class="wrapper">
-    <form action="">
+    <form action="#" method="post">
         <h1>Register</h1>
         <div class="input-box">
             <div class="input-field">
-                <input type="text" placeholder="Username" required>
+                <input type="text" placeholder="Username" name="username" required>
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
                 <div class="input-field">
-                    <input type="email" placeholder="Email" required>
+                    <input type="email" placeholder="Email" name="email" required>
                     <i class='bx bxl-gmail' ></i>
                 </div>
                 <div class="input-field">
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" placeholder="Password" name="password" required>
                     <i class='bx bxs-lock-alt' ></i>
                 </div>
                 <div class="input-field">
-                    <input type="password" placeholder="Confirm password" required>
+                    <input type="password" placeholder="Confirm password" name="confirm" required>
                     <i class='bx bxs-lock-alt' ></i>
                 </div>
-            <label><input type="checkbox">I agree that the information above is correct</label>
-            <button type="Submit" class="btn">Register</button>
+                {% with messages = get_flashed_messages() %}
+                 {% if messages %}
+                  {% for msg in messages %}
+                    <p style="color: red;">{{msg}}</p>
+                  {% endfor %}
+                 {% endif %}
+                {% endwith %}
+            <label><input type="checkbox" name="checkbox" required>I agree that the information above is correct</label>
+            <button type="submit" class="btn">Register</button>
         </div>
     </form>
 </div>

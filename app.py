@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect, session
+from flask import Flask, render_template, request, url_for, redirect, session, flash
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -33,10 +33,12 @@ def login():
         
         if user is None:
             print("doesnt exist")
+            flash("user doesnt exist")
             return redirect(url_for("login"))
         
         if user.password != password:
             print("invalid password")
+            flash("invalid password")
             return redirect(url_for("login"))
 
         session['user-username'] = user.username
@@ -51,14 +53,20 @@ def login():
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
-    if (request.method == 'POST'):
+    if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        confirm_password = request.form['confirm']
         email = request.form['email']
+
+        if confirm_password != password:
+            flash("password dont match")
+            return redirect(url_for("register"))
 
         user = users(username, password, email)
         db.session.add(user)
         db.session.commit()
+        return redirect(url_for("login"))
     
 
     return render_template("register.html", title="Registration")
@@ -67,9 +75,9 @@ def register():
 
 
 
-@app.route('/view')
+@app.route('/database')
 def view():
-    return render_template("view.html", values=users.query.all())
+    return render_template("database.html", values=users.query.all())
 
 
 
