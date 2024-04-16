@@ -40,12 +40,11 @@ def login():
             print("invalid password")
             flash("invalid password")
             return redirect(url_for("login"))
+        else:
+            session['user_username'] = user.username
+            session['user_id'] = user._id
 
-        session['user-username'] = user.username
-        session['user-id'] = user._id
-
-        print(session['user-username'])
-        print(session['user-id'])
+            return redirect(url_for("home"))
 
     
 
@@ -78,6 +77,12 @@ def register():
 @app.route('/database')
 def view():
     return render_template("database.html", values=users.query.all())
+
+
+@app.route("/instify")
+def home():
+
+    return render_template("instify.html")
 
 
 
