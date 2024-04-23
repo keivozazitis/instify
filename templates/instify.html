@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='instify.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Instify</title>
 </head>
 <body>
     <div class="sidebar">
         <a href="#" class="logo">
-            <img src="instify.png" alt=".">
+            <!--<img src="instify.png" alt=".">-->
         </a>
         <div class="profile">
             <div class="profile-img">
@@ -40,9 +41,89 @@
         <div class="menu">
             <a href="#" class="activate">
                 <span class="icon">
-                    
+                    <box-icon name='merge'></box-icon>
                 </span>
+                Feed
+            </a>
+            <a href="#">
+                <span class="icon">
+                    <box-icon name='search-alt'></box-icon>
+                </span>
+                Explore
+            </a>
+
+            <a href="#">
+                <span class="icon">
+                    <box-icon type='solid' name='bell'></box-icon>
+                </span>
+                Notification
+            </a>
+
+            <a href="#">
+                <span class="icon">
+                    <box-icon name='envelope' ></box-icon>
+                </span>
+                Messages
+            </a>
+
+            <a href="#">
+                <span class="icon">
+                    <box-icon name='paper-plane'></box-icon>
+                </span>
+                Direct
+            </a>
+
+            <a href="#">
+                <span class="icon">
+                    <box-icon name='stats'></box-icon>
+                </span>
+                Stats
+            </a>
+
+            <a href="#">
+                <span class="icon">
+                    <box-icon name='cog' type='solid' ></box-icon>
+                </span>
+                Settings
+            </a>
+
+            <a href="#">
+                <span class="icon">
+                    <box-icon name='log-out'></box-icon>
+                </span>
+                Logout
             </a>
         </div>
+    </div>
+    <div class="main-home">
+        <div class="header">
+            <div class="search">
+                <box-icon name='search' type='solid' ></box-icon>
+                <input type="text" placeholder="search">
+            </div>
+            <div class="header-content">
+                <box-icon type='solid' name='bell'></box-icon>
+                <box-icon type='solid' name='notification'></box-icon>
+                <a href="#" class="btn">
+                    <box-icon type='solid' name='plus-circle'></box-icon>
+                    <div class="btn-text">Add photo</div>
+                </a>
+            </div>
+        </div>
+        <!--storiji-->
+        <div class="stories-title">
+            <h1>Stories</h1>
+            <a href="#" class="btn">
+                <box-icon name='play-circle'></box-icon>
+                <div class="text">Watch all</div>
+            </a>
+        </div>
+        <div class="stories">
+            <div class="stories-img color">
+                <img src="profile.png" alt="">
+                <div class="add">+</div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
