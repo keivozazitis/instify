@@ -2,9 +2,11 @@ from flask import Flask, render_template, request, url_for, redirect, session, f
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users_1.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = "IUFBAINnfnauionfuanUINFI"
+
+
 
 
 db = SQLAlchemy(app)
@@ -28,23 +30,23 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        session.pop('user_username', None)
+        session.pop("user_id", None)
         
         user = users.query.filter_by(username = username).first()
         
-        if user is None:
+        if user is None or user.password != password:
             print("doesnt exist")
             flash("user doesnt exist")
-            return redirect(url_for("login"))
-        
-        if user.password != password:
-            print("invalid password")
-            flash("invalid password")
-            return redirect(url_for("login"))
+            return redirect(request.referrer)
         else:
+        
             session['user_username'] = user.username
             session['user_id'] = user._id
+            print(session['user_username'])
+            print(session['user_id'])
 
-            return redirect(url_for("home"))
+            return redirect(url_for("home", username=user.username))
 
     
 
@@ -81,8 +83,8 @@ def view():
 
 @app.route("/instify")
 def home():
-
-    return render_template("instify.html")
+    username = request.args.get('username', None)
+    return render_template("instify.html", username=username)
 
 
 
