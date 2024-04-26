@@ -91,7 +91,12 @@
                 <span class="icon">
                     <box-icon name='log-out'></box-icon>
                 </span>
-                Logout
+                <span onclick="logout()">Logout</span>
+                <script>
+                    function logout(){
+                        window.location = '/logout'
+                    }
+                </script>
             </a>
         </div>
     </div>
