@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request, url_for, redirect, session, flash
 from flask_sqlalchemy import SQLAlchemy
+import requests # type: ignore
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users_1.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = "IUFBAINnfnauionfuanUINFI"
-
+API_KEY = "DeC83FkuGywLwbTUX3nazG6bQh9OjVjt1dLAtZ5ech9h31dn1gYgnned"
+API_URL = 'https://api.pexels.com/v1/curated?per_page=5'
 
 
 
@@ -30,23 +32,20 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        session.pop('user_username', None)
-        session.pop("user_id", None)
-        
+
         user = users.query.filter_by(username = username).first()
-        
-        if user is None or user.password != password:
-            print("doesnt exist")
-            flash("user doesnt exist")
+
+        if user is None:
+            flash("invalid email")
             return redirect(request.referrer)
+        elif user.password != password:
+            flash('invalid password')
         else:
         
             session['user_username'] = user.username
             session['user_id'] = user._id
-            print(session['user_username'])
-            print(session['user_id'])
 
-            return redirect(url_for("home", username=user.username))
+            return redirect(url_for("home"))
 
     
 
@@ -73,6 +72,13 @@ def register():
     return render_template("register.html", title="Registration")
 
 
+@app.route('/logout')
+def logout():
+    session.pop('user_id', None)
+    session.pop('user_username', None)
+    return redirect(url_for('login'))
+
+
 
 
 
@@ -83,8 +89,30 @@ def view():
 
 @app.route("/instify")
 def home():
-    username = request.args.get('username', None)
-    return render_template("instify.html", username=username)
+
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    
+    username = session['user_username']
+
+    headers = {
+    'Authorization': API_KEY
+    }
+    res = requests.get(API_URL, headers=headers)
+    if res.status_code != 200:
+        print(f'Error: {res.status_code}')
+    
+    data = res.json()
+    photo_urls = []
+    for photo in data['photos']:
+        photo_urls.append(photo['src']['original'])
+    
+    print(photo_urls)
+
+
+
+
+    return render_template("instify.html", username=username, photos=photo_urls)
 
 
 
