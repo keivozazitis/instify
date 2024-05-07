@@ -10,28 +10,31 @@ body {
     background: url('backgrounds.png');
 }
 :root{
-    --gradient:linear-gradient(to right, red, orange);
+    --gradient:linear-gradient(to right, rgb(128, 0, 255), rgb(234, 0, 255));
 }
 .sidebar {
-    position: fixed;
+    
+    position: absolute;
     width: 300px;
     height: 100vh;
     padding: 20px;
-    background: white;
+    background: url('backgrounds.png');
+    background-size: cover;
+    color: white;
 }
+
 .main-home {
     position: absolute;
     width: calc(100% - 300px);
     min-height: 100vh;
     top: 0;
     left: 300px;
-    background: white;
+    background: url('backgrounds.png');
+    background-size: cover;
     border-radius: 1rem 0 0 1rem;
     z-index: 1000;
 }
-.logo{
-    width: 140px;
-}
+
 .profile{
     display: flex;
     flex-direction: column;
@@ -46,7 +49,7 @@ body {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 2px solid red;
+    border: 2px solid rgb(126, 30, 205);
 }
 .profile-img img{
     width: 70px;
@@ -62,6 +65,7 @@ body {
 }
 .name h1{
     font-size: 1.1rem;
+    color: white;
 }
 .name img{
     margin-left: 4px;
@@ -91,7 +95,7 @@ body {
 .menu a{
     width: 100%;
     font-size: 1rem;
-    color: black;
+    color: rgb(255, 255, 255);
     display: flex;
     align-items: center;
     line-height: 40px;
@@ -167,16 +171,9 @@ body {
 }
 .stories-title h1{
     font-size: 1.8rem;
+    color: white;
 }
-.stories-title .btn{
-    display: flex;
-    align-items: center;
-    color: black;
-}
-.stories-title .btn i{
-    font-size: 24px;
-    margin-right: 10px;
-}
+
 .stories{
     display: flex;
     align-items: center;
@@ -190,7 +187,7 @@ body {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 2px solid red;
+    border: 2px solid rgb(126, 30, 205);
 }
 .stories-img img{
     width: 70px;
@@ -198,4 +195,96 @@ body {
     object-fit: cover;
     border-radius: 50%;
     object-position: center;
+}
+.stories-img.color {
+    border: 2px solid white;
+}
+.stories-img .add{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    color: white;
+    background: hsla(246, 100%, 67%, 0.7);
+}
+.feed {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+.feed h1{
+    font-size: 1.7rem;
+}
+.feed-text{
+    display: flex;
+    align-items: center;
+}
+.feed-text h2{
+    font-size: 1rem;
+    margin-right: 1rem;
+}
+.main-posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+    gap: 11px;
+}
+.post-box{
+    width: 300px;
+}
+.post-box img {
+    width: 100%;
+    height: 344px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+.post-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.post-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border: 2px solid rgb(126, 30, 205);
+    border-radius: 50%;
+}
+.post-img img{
+    width: 27px;
+    height: 27px;
+    object-fit: cover;
+    border-radius: 50%;
+    object-position: center;
+}
+.post-profile{
+    display: flex;
+    align-items: center;
+}
+.post-profile h3{
+    font-size: 12px;
+    font-weight: 600px;
+    margin-left: 5px;
+}
+.likes{
+    display: flex;
+    align-items: center;
+}
+.likes i{
+    font-size: 20px;
+    margin-left: 10px;
+}
+.likes span{
+    font-size: 14px;
+    margin-left: 7px;
+    color: white;
+}
+.feed{
+    color: white;
 }
