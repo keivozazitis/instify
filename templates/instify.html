@@ -79,13 +79,35 @@
                     }
                 </script>
             </a>
+            <a href="#" onclick="deleteProfile(event)">
+                <i class='bx bx-x-circle'></i>
+                <i>Delete profile</i>
+            </a>
+            <script>
+                function deleteProfile(event) {
+                    event.preventDefault(); // Prevent the default action of the link
+                    if (confirm('Are you sure you want to delete your profile?')) {
+                        window.location = '/deleteProfile';
+                    }
+                }
+            </script>
+ 
         </div>
     </div>
     <div class="main-home">
         <div class="header">
-            <div class="search">
-                <i class='bx bx-search-alt-2' ></i>
-                <input type="text" placeholder="search">
+            <div class="sort_container">
+                <p>Sort by</p>
+                <select onchange="sort(this)">
+                    <option value="comments">------</option>
+                    <option value="likes">Likes</option>
+                    <option value="shares">Shares</option>
+                </select>
+                <script>
+                    function sort(e){
+                        window.location = '/sort_by/'+e.value
+                    }
+                </script>
             </div>
             <div class="header-content">
                 <i class='bx bxs-bell'></i>
@@ -140,32 +162,36 @@
             </div>
         </div>
         <!--main posti-->
-        <div class="feed">
+        <!--<div class="feed">
             <h1>Feed</h1>
             <div class="feed-text">
                 <h2>Latest</h2>
                 <span>Popular</span>
             </div>
         </div>
-        <!--posti-->
+        <!-posti-->
         <div class="main-posts">
             <!--1. box-->
-            <div class="post-box">
 
-            </div>
-            <div class="post-info">
-                <div class="post-profile">
-                    <div class="post-img">
-                        <img src="{{ url_for('static', filename='pfp.jpg') }}" alt="Prof.pic">
+            {% for post in posts %}
+                <div class="post-box">
+                    <div class="post-box-top">{{post['name']}}</div>
+                    <img class="post-box-middle" src="{{post['url']}}" style="height: 80%;"/>
+                    <div class="post-box-bottom">
+                        <div class="likes">
+                            <i class='bx bxs-heart bx-lg'></i>
+                            <span style="color: black;  font-size: 24px;">{{post['likes']}}</span>
+                            <i class='bx bx-comment bx-lg' ></i>
+                            <span style="color: black; font-size: 24px;">{{post['comments']}}</span>
+                            <i class='bx bx-paper-plane bx-lg' ></i>
+                            <span style="color: black;  font-size: 24px;">{{post['shares']}}</span>
+
+                        </div>
                     </div>
-                    <h3>Markuss.berzins</h3>
                 </div>
-                <div class="likes">
-                    <i class='bx bxs-heart'></i>
-                    <span>84.4k</span>
-                    <i class='bx bx-comment' ></i>
-                    <span>14</span>
-                </div>
+            {% endfor %}
+            <div class="post-info">
+
             </div>
         </div>
     </div>

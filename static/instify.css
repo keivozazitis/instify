@@ -18,8 +18,7 @@ body {
     width: 300px;
     height: 100vh;
     padding: 20px;
-    background: url('backgrounds.png');
-    background-size: cover;
+    background: rgb(126, 30, 205) repeat;
     color: white;
 }
 
@@ -29,7 +28,7 @@ body {
     min-height: 100vh;
     top: 0;
     left: 300px;
-    background: url('backgrounds.png');
+    background: rgb(234, 0, 255);
     background-size: cover;
     border-radius: 1rem 0 0 1rem;
     z-index: 1000;
@@ -122,24 +121,6 @@ body {
     align-items: center;
     justify-content: space-between;
 }
-.search{
-    display: flex;
-    align-items: center;
-    background: whitesmoke;
-    width: 200px;
-    height: 2.4rem;
-    padding: 10px;
-    border-radius: 10px ;
-}
-.search input{
-    border: none;
-    outline: none;
-    background: transparent;
-    margin-left: 7px;
-}
-.search o{
-    font-size: 20px;
-}
 .header-content{
     display: flex;
     align-items: center;
@@ -229,12 +210,40 @@ body {
     margin-right: 1rem;
 }
 .main-posts {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+   
     gap: 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .post-box{
-    width: 300px;
+    width: 600px;
+    height: 650px;
+    margin-top: 20px;
+}
+
+.post-box-top{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+.post-box-middle{
+    width: 100%;
+    /* height: 80%; */
+    background-size: cover;
+    background-position: center;
+    background-color: red;
+}
+
+.post-box-bottom{
+    width: 100%;
+    height: 10%;
+
 }
 .post-box img {
     width: 100%;
@@ -287,4 +296,9 @@ body {
 }
 .feed{
     color: white;
+}
+
+.sort_container{
+    display: flex;
+    align-items: center;
 }
