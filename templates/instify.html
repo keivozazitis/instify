@@ -11,7 +11,7 @@
     <div class="sidebar">
         <div class="profile">
             <div class="profile-img">
-                <img src="{{ url_for('static', filename='pfp.jpg') }}" alt="Prof.pic">
+                <img src="{{ url_for('static', filename='Instify.png') }}" alt="Prof.pic">
             </div>
             <div class="name">
                 <h1>{{username}}</h1>
@@ -85,7 +85,7 @@
             </a>
             <script>
                 function deleteProfile(event) {
-                    event.preventDefault(); // Prevent the default action of the link
+                    event.preventDefault();
                     if (confirm('Are you sure you want to delete your profile?')) {
                         window.location = '/deleteProfile';
                     }
@@ -110,8 +110,7 @@
                 </script>
             </div>
             <div class="header-content">
-                <i class='bx bxs-bell'></i>
-                <i class='bx bxs-notification'></i> 
+                <h1>Instify</h1>
             </div>
         </div>
         <!--storiji-->
@@ -162,14 +161,13 @@
             </div>
         </div>
         <!--main posti-->
-        <!--<div class="feed">
+        <div class="feed">
             <h1>Feed</h1>
             <div class="feed-text">
                 <h2>Latest</h2>
                 <span>Popular</span>
             </div>
         </div>
-        <!-posti-->
         <div class="main-posts">
             <!--1. box-->
 

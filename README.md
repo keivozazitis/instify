@@ -1,13 +1,7 @@
-# GitHub Codespaces ♥️ Flask
-
-Welcome to your shiny new Codespace running Flask! We've got everything fired up and running for you to explore Flask.
-
-You've got a blank canvas to work on from a git perspective as well. There's a single initial commit with the what you're seeing right now - where you go from here is up to you!
-
-Everything you do here is contained within this one codespace. There is no repository on GitHub yet. If and when you’re ready you can click "Publish Branch" and we’ll create your repository and push up your project. If you were just exploring then and have no further need for this code then you can simply delete your codespace and it's gone forever.
-
-To run this application:
-
-```
-flask --debug run
-```
+Kas ir nepieciešams lai mūsu mājaslapa pilnvērtīgi strādātu.
+-> Terminālī ir jāieraksta - pip install flask_sqlalchemy
+-> Jāļauj lai viss ielādējās.
+-> Tālāk terminālī ir jāievada komanda - flask --debug run
+-> Tad sānā atvērsies browseris, taču tas nav pietiekami optimizēts, tāpēc skatoties terminālī ir redzams garš sarkans teksts ar WARNING message, zem kā ir redzams links uz kā iet mūsu mājaslapa. Tai jāizskatās šādi -  Running on http://127.0.0.1:5000
+-> Uz šo linku uzspiežot jums atvērsies mājaslapa jūsu pēc noklusējuma uzstādītajā browserī.
+-> Ja visiem punktiem sekojāt līdzi un izdarījāt pareizi, tad vajadzētu būt, ka varat izbaudīt visu ko sniedz Instify 
